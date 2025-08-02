@@ -2,7 +2,7 @@ import models as model
 import sqlalchemy as sql
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm import Session
-from sqlalchemy import MetaData, Table
+
 
 def insertContent(content: str) ->None:
     engine  = sql.create_engine("postgresql+psycopg2://admin:12345@localhost/crudDB2")
@@ -25,5 +25,14 @@ def selctDB ()->list:
         session = Session()
   
         results = session.query(model.ParserData).all()
+        session.close()
+        return results
+
+def selctID (id: int) ->list:
+        engine  = sql.create_engine("postgresql+psycopg2://admin:12345@localhost/crudDB2")
+        Session = sessionmaker(bind=engine)
+        session = Session()
+  
+        results =  session.get(model.ParserData,id)
         session.close()
         return results
