@@ -27,4 +27,4 @@ def parcAndInsert():
         if cont != "":
             insertContent(cont)
 
-    print ("Ok")
+    print ("insert OK")
