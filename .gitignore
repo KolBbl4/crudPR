@@ -3627,3 +3627,5 @@ data/page.html
 .venv/Scripts/watchfiles.exe
 .venv/Scripts/websockets.exe
 __pycache__/main.cpython-39.pyc
+fasApi/__pycache__/fastApi.cpython-39.pyc
+__pycache__/parserData.cpython-39.pyc

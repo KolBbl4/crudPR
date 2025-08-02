@@ -1,9 +1,18 @@
+from dabase import selctDB
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 
-api = FastAPI()
 
-@api.get('/')
+app = FastAPI()
+
+@app.get('/')
 def wed():
-    html_content = "<h2>Hello METANIT.COM!</h2>"
+    conten = selctDB()
+    html_content = ""
+    for textConten in conten:
+        html_content = textConten +'</br>'+ html_content
     return HTMLResponse(content=html_content)
+conten = selctDB()
+print(conten)
+# for textConten in conten:
+#         html_content = textConten +'</br>'+ html_content

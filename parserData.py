@@ -2,28 +2,29 @@ import requests
 from bs4 import BeautifulSoup
 from dabase import insertContent
 
-url = 'https://www.metrtv.ru/novostroiki'
-response = requests.get(url)
+def parcAndInsert():
+    url = 'https://www.metrtv.ru/novostroiki'
+    response = requests.get(url)
 
-# if response.status_code == 200:
-#     with open('data/page.html', 'w', encoding='utf-8') as file:
-#         file.write(response.text)
-#     print('Страница успешно сохранена в файл "page.html"') 
+    # if response.status_code == 200:
+    #     with open('data/page.html', 'w', encoding='utf-8') as file:
+    #         file.write(response.text)
+    #     print('Страница успешно сохранена в файл "page.html"') 
 
-#     # soup_ing = str(BeautifulSoup(r.content, 'lxml'))
-#     # print(soup_ing)
-# else:
-#     raise "ошибка работы с сайтом"
+    #     # soup_ing = str(BeautifulSoup(r.content, 'lxml'))
+    #     # print(soup_ing)
+    # else:
+    #     raise "ошибка работы с сайтом"
 
 
-with open('data/page.html', 'r', encoding='utf-8') as file:
-    html_content = file.read()
+    with open('data/page.html', 'r', encoding='utf-8') as file:
+        html_content = file.read()
 
-soup = BeautifulSoup(html_content, 'lxml')
-content = soup.select('div.text > div.desc')
-for text in content:
-    cont = text.get_text()
-    if cont != "":
-        insertContent(cont)
+    soup = BeautifulSoup(html_content, 'lxml')
+    content = soup.select('div.text > div.desc')
+    for text in content:
+        cont = text.get_text()
+        if cont != "":
+            insertContent(cont)
 
-print ("Ok")
+    print ("Ok")
