@@ -1,11 +1,11 @@
 import requests
 from bs4 import BeautifulSoup
-from dabase import insertContent
+from dabase import dabase
 
+dabase = dabase("postgresql+psycopg2://admin:12345@localhost/crudDB2")
 def parcAndInsert():
     url = 'https://www.metrtv.ru/novostroiki'
     response = requests.get(url)
-
     # if response.status_code == 200:
     #     with open('data/page.html', 'w', encoding='utf-8') as file:
     #         file.write(response.text)
@@ -25,6 +25,7 @@ def parcAndInsert():
     for text in content:
         cont = text.get_text()
         if cont != "":
-            insertContent(cont)
+            dabase.insertContent(cont)
 
     print ("insert OK")
+parcAndInsert()
