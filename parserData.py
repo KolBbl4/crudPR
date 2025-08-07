@@ -1,9 +1,14 @@
 import requests
 from bs4 import BeautifulSoup
 from dabase import dabase
+from dotenv import load_dotenv
+import os
 
-dabase = dabase("postgresql+psycopg2://admin:12345@localhost/crudDB2")
+load_dotenv()
+dabase = dabase(os.getenv("DATABASE_URL"))
+
 def parcAndInsert():
+
     url = 'https://www.metrtv.ru/novostroiki'
     response = requests.get(url)
     # if response.status_code == 200:
